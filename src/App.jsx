@@ -5,22 +5,12 @@ import Home from './pages/Home';
 import SideNavbar from './pages/Navbar/SideNavbar';
 import Spinner from './components/Spinner';
 import { MyContext } from './context/MyContext';
+import ApprovedPosts from './pages/Dashboard/ApprovedPosts';
+import RejectedPosts from './pages/Dashboard/RejectedPosts';
+import Sales from './pages/Dashboard/Sales';
 
 function App() {
-  // const [themeMode, setthemeMode] = useState("light")
-  // const lightTheme = () => {
-  //   setthemeMode("light")
-  // }
-  // const darkTheme = () => {
-  //   setthemeMode("dark")
-  // }
-  // useEffect(() => {
-  //   document.querySelector('html').classList.remove("light", "dark")
-  //   document.querySelector("html").classList.add(themeMode)
-  // }, [themeMode])
   const { loader, setloader } = useContext(MyContext)
-
-
   useEffect(() => {
     setloader(true)
   }, [])
@@ -34,7 +24,9 @@ function App() {
             <div className="flex-grow p-4 ml-0 sm:ml-[20vw] md:ml-[15vw]">
               <Routes>
                 <Route path='/' element={<Home />} />
-                {/* Add other routes here */}
+                <Route path='/dashboard/approvedposts' element={<ApprovedPosts />} />
+                <Route path='/dashboard/rejectedPosts' element={<RejectedPosts />} />
+                <Route path='/dashboard/sales' element={<Sales />} />
               </Routes>
             </div>
           </div>

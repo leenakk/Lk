@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navlist from '../../components/Navlist'
 import Button from '../../components/Button'
 import { useLocation } from 'react-router-dom'
+import { MyContext } from "./../../context/MyContext"
 
 export default function SideNavbar() {
+    const { PostForm, setPostForm } = useContext(MyContext)
     const location = useLocation()
     return (
         <React.Fragment>
@@ -24,10 +26,6 @@ export default function SideNavbar() {
                             <div>
                                 <ul className='flex flex-col  gap-y-5'>
                                     <div className='flex gap-x-3 cursor-pointer items-center'>
-                                        <i class={`fa-solid fa-user ${location.pathname === '/profile' ? 'text-rose-700' : "text-gray-400"} hover:text-rose-700 `}></i>
-                                        <li className={`${location.pathname === "/profile" ? 'text-black' : "text-gray-400"} hover:text-black  text-md font-medium  `}>Profile</li>
-                                    </div>
-                                    <div className='flex gap-x-3 cursor-pointer items-center'>
                                         <i class={`fa-solid fa-gear ${location.pathname === '/settings' ? 'text-rose-700' : "text-gray-400"} hover:text-rose-700 `}></i>
                                         <li className={`${location.pathname === "/settings" ? 'text-black' : "text-gray-400"} hover:text-black  text-md font-medium  `}>Settings</li>
                                     </div>
@@ -43,19 +41,20 @@ export default function SideNavbar() {
             <div className='block sm:hidden fixed bottom-[-10px] left-0 right-0 bg-white w-full py-6 rounded-xl px-6 z-10 shadow-2xl'>
                 <ul className='flex justify-between w-full'>
                     <li>
-                        <i class={`fa-solid fa-house ${location.pathname === "/" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300 text-[25px]`}></i>
+                        <i class={`fa-solid fa-house ${location.pathname === "/" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`}></i>
+                    </li>
+
+                    <li>
+                        <i class={`fa-solid fa-table-list ${location.pathname === "/dashboard" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`}></i>
                     </li>
                     <li>
-                        <i class={`fa-solid fa-coins ${location.pathname === "/earnings" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300 text-[25px]`}></i>
+                        <i class={`fa-regular fa-square-plus hover:transition hover:text-rose-700 hover:duration-300 text-[25px]`} onClick={() => setPostForm(true)}></i>
                     </li>
                     <li>
-                        <i class={`fa-solid fa-coins ${location.pathname === "/dashboard" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300 text-[25px]`}></i>
+                        <i class={`fa-solid fa-cart-flatbed ${location.pathname === "/myOrders" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`}></i>
                     </li>
                     <li>
-                        <i class={`fa-solid fa-cart-flatbed ${location.pathname === "/myOrders" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300 text-[25px]`}></i>
-                    </li>
-                    <li>
-                        <i class={`fa-solid fa-user ${location.pathname === "/profile" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300 text-[25px]`}></i>
+                        <i class={`fa-solid fa-gear ${location.pathname === "/profile" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300  hover:text-rose-700 text-[25px]`}></i>
                     </li>
                 </ul>
             </div>

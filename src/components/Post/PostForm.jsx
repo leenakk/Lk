@@ -8,8 +8,8 @@ export default function Postform() {
         <React.Fragment>
             {PostForm &&
                 <>
-                    <div className='scale-125 fixed top-0 left-0 right-0 bottom-0' onClick={() => setPostForm(false)} style={{ background: "rgb(189, 189, 189, 0.9)" }}></div>
-                    <div className='flex flex-col justify-center  gap-y-2 fixed left-[50%]  w-[70vw] top-[50%] transition duration-300  sm:w-[50vw]  bg-[white] rounded-lg shadow-lg py-4 px-4' style={{ transform: "translate(-50% , -50%)" }}>
+                    <div className='scale-125 fixed top-0 left-0 right-0 bottom-0 ' onClick={() => setPostForm(false)} style={{ background: "rgb(189, 189, 189, 0.9)" }}></div>
+                    <div className='flex flex-col justify-center  gap-y-2 fixed z-[999] left-[50%]  w-[90vw] top-[50%] transition duration-300  sm:w-[50vw]  bg-[white] rounded-lg shadow-lg py-4 px-4' style={{ transform: "translate(-50% , -50%)" }}>
                         <div className='flex justify-between'>
                             <h1 className='text-xl font-bold'>Create a Post</h1>
                             <i class="fa-solid fa-xmark text-[20px] hover:bg-gray-200 p-2 rounded-full cursor-pointer hover:transition-all hover:duration-500" onClick={() => setPostForm(false)}></i>
@@ -27,11 +27,11 @@ export default function Postform() {
                             <input id="file" type="file" class="hidden" />
                         </label>
 
-                        <div className='flex justify-between  mt-3 px-3'>
+                        <div className='flex  items-center justify-between  mt-3 px-3'>
                             <div className='flex gap-x-3 items-center'>
                                 <h1 className='font-bold'>Price :</h1>
                                 <div class="relative mb-5">
-                                    <input id="input-field" placeholder="Enter Price" class="peer block  px-1 py-1 text-base border-b-2 border-gray-300 bg-transparent outline-none transition-all duration-300" type="text" />
+                                    <input id="input-field" placeholder="Enter Price" class="peer block  py-1 text-base border-b-2 border-gray-300 bg-transparent outline-none transition-all duration-300 w-24" type="text" />
                                     <span class="absolute bottom-0 left-0 h-0.5 w-0 bg-rose-700 transition-all duration-300 peer-focus:w-full"></span>
                                 </div>
                             </div>

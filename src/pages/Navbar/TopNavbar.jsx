@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { MyContext } from '../../context/MyContext'
+import StyledButton from '../../components/StyledButton';
 
 
 export default function TopNavbar() {
@@ -10,16 +11,12 @@ export default function TopNavbar() {
         <React.Fragment>
             <div className='flex justify-between items-center w-full'>
                 <div>
-                    <button className='bg-white px-9 sm:px-16 py-3 rounded-full font-medium hover:bg-gray-100 hover:text-gray-500 shadow-xl' onClick={() => { setPostForm(true)}}>
-                        What's on your mind?
-                    </button>
+                    <StyledButton btnTxt="Create a Post" click={() => setPostForm(true)} />
                 </div>
-
-
                 <div className="flex items-center gap-4">
                     <SignedOut>
                         <SignInButton>
-                            <button className="bg-rose-700 px-5 w-28 py-2 text-white rounded-full hover:bg-rose-400 hover:text-rose-700 hover:transition hover:duration-300 font-medium">
+                            <button class="relative px-6 py-2 border-2 border-rose-700 text-rose-700 uppercase font-medium text-base transition-all duration-300 overflow-hidden bg-transparent rounded-full before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:h-[300%] before:w-0 before:transform before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-45 before:bg-rose-700 before:z-[-1] before:transition-all before:duration-500 before:ease-in-out hover:text-white hover:before:w-full">
                                 Sign In
                             </button>
                         </SignInButton>

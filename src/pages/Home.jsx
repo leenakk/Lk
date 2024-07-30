@@ -10,9 +10,11 @@ export default function Home() {
 
     return (
         <React.Fragment>
-            <div className='flex flex-col gap-y-5'>
-                <TopNavbar />
-                <div className='flex flex-col gap-5'>
+            <div className='flex flex-col sm:justify-center sm:items-center gap-y-5 mb-16'>
+                <div className='sm:w-[60vw] lg:max-w-2xl'>
+                    <TopNavbar />
+                </div>
+                <div className='flex flex-col justify-center w-full items-center gap-5'>
                     {postArray.map((items, index) => (
                         <Post
                             key={index}
@@ -26,9 +28,9 @@ export default function Home() {
                             price={items.price}
                         />
                     ))}
-                </div>  
+                </div>
             </div>
-            {PostForm && <Postform /> }
+            {PostForm && <Postform />}
         </React.Fragment>
     );
 }
