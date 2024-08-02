@@ -1,11 +1,18 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Navlist from '../../components/Navlist'
 import Button from '../../components/Button'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { MyContext } from "./../../context/MyContext"
+import { useContext } from 'react'
+import { RiAdminFill } from "react-icons/ri";
 
 export default function SideNavbar() {
-    const { PostForm, setPostForm } = useContext(MyContext)
+    const { loader, setloader, PostForm, setPostForm } = useContext(MyContext)
+    const nav = useNavigate()
+    const navigation = (path) => {
+        setloader(true)
+        nav(path)
+    }
     const location = useLocation()
     return (
         <React.Fragment>
@@ -29,6 +36,10 @@ export default function SideNavbar() {
                                         <i class={`fa-solid fa-gear ${location.pathname === '/settings' ? 'text-rose-700' : "text-gray-400"} hover:text-rose-700 `}></i>
                                         <li className={`${location.pathname === "/settings" ? 'text-black' : "text-gray-400"} hover:text-black  text-md font-medium  `}>Settings</li>
                                     </div>
+                                    <div className='flex gap-x-3 cursor-pointer items-center' onClick={() => navigation('/admin')}>
+                                        <RiAdminFill size="18px" className={` ${location.pathname === '/admin' ? 'text-rose-700' : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300`} />
+                                        <li className={`text-md font-medium ${location.pathname === '/admin' ? 'text-black' : 'text-gray-400'} hover:text-black  hover:transition hover:duration-300`}>Admin</li>
+                                    </div>
                                 </ul>
                             </div>
 
@@ -36,29 +47,29 @@ export default function SideNavbar() {
 
                     </div>
                 </div>
-            </div>
+            </div >
 
             <div className='block sm:hidden fixed bottom-[-10px] left-0 right-0 bg-white w-full py-6 rounded-xl px-6 z-10 shadow-2xl'>
                 <ul className='flex justify-between w-full'>
                     <li>
-                        <i class={`fa-solid fa-house ${location.pathname === "/" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`}></i>
+                        <i class={`fa-solid fa-house ${location.pathname === "/" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`} onClick={()=>navigation('/')}></i>
                     </li>
 
                     <li>
-                        <i class={`fa-solid fa-table-list ${location.pathname === "/dashboard" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`}></i>
+                        <i class={`fa-solid fa-table-list ${location.pathname === "/dashboard/approvedposts" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`} onClick={()=>navigation('/dashboard/approvedposts')}></i>
                     </li>
                     <li>
                         <i class={`fa-regular fa-square-plus hover:transition hover:text-rose-700 hover:duration-300 text-[25px]`} onClick={() => setPostForm(true)}></i>
                     </li>
                     <li>
-                        <i class={`fa-solid fa-cart-flatbed ${location.pathname === "/myOrders" ? "text-rose-700" : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300 text-[25px]`}></i>
+                        <RiAdminFill size="25px" className={` ${location.pathname === '/admin' ? 'text-rose-700' : "text-gray-400"} hover:text-rose-700 hover:transition hover:duration-300`}  onClick={()=>navigation('/admin')}/>
                     </li>
                     <li>
-                        <i class={`fa-solid fa-gear ${location.pathname === "/profile" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300  hover:text-rose-700 text-[25px]`}></i>
+                        <i class={`fa-solid fa-gear ${location.pathname === "/profile" ? "text-rose-700" : "text-gray-400"} hover:transition hover:duration-300  hover:text-rose-700 text-[25px]`} onClick={()=>navigation('/profile')}></i>
                     </li>
                 </ul>
             </div>
 
-        </React.Fragment>
+        </React.Fragment >
     )
 }

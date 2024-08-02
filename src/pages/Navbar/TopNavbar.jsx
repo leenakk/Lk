@@ -11,7 +11,7 @@ export default function TopNavbar() {
         <React.Fragment>
             <div className='flex justify-between items-center w-full'>
                 <div>
-                    <StyledButton btnTxt="Create a Post" click={() => setPostForm(true)} />
+                    <StyledButton btnTxt="Create a Post" Class="border-2 border-rose-700 text-rose-700 before:bg-rose-700" click={() => setPostForm(true)} />
                 </div>
                 <div className="flex items-center gap-4">
                     <SignedOut>

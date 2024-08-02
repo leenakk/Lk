@@ -4,16 +4,20 @@ import { FaCircleDollarToSlot } from "react-icons/fa6";
 import { FaCartFlatbedSuitcase } from "react-icons/fa6";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { salesArray } from './salesData';
+import { MyContext } from '../../context/MyContext';
+import Postform from '../../components/Post/PostForm';
 
 
 export default function Sales() {
+    const { loader, setloader, PostForm, setPostForm } = useContext(MyContext)
+
 
 
     return (
         <React.Fragment>
-            <div className='grid grid-cols-[auto,1fr] '>
+            <div className='grid grid-cols-[auto,1fr] h-screen'>
                 <DashboardNavbar />
-                <div className='flex flex-col sm:ml-[20vw] md:ml-[20vw] lg:ml-[8vw] gap-y-5 mt-2 px-2 sm:mb-0 mb-16'>
+                <div className='flex flex-col h-screen py-5 sm:ml-[20vw] md:ml-[20vw] lg:ml-[8vw] gap-y-5 mt-2 px-2 sm:mb-0 mb-16'>
                     <h1 className='text-xl font-bold text-center sm:text-start'>Sales Insight</h1>
                     <div className='flex flex-col sm:flex-row justify-center items-center sm:justify-start gap-4 w-full'>
                         <div className='bg-white sm:w-[30vw] lg:w-[20vw] w-[70vw] rounded-lg p-4 flex flex-col shadow-xl justify-start items-start gap-y-3'>
@@ -83,12 +87,12 @@ export default function Sales() {
                                 </MenuItems>
                             </Menu>
                         </div>
-                        <div class="bg-white shadow-md rounded-lg  w-full ">
-                            <div class="grid grid-cols-4  w-full gap-4 py-4 px-6 bg-gray-100">
-                                <h3 class="text-xs md:text-lg font-medium text-gray-800 flex-grow">Customer</h3>
-                                <h3 class="text-xs md:text-lg font-medium text-gray-800 flex-grow">Cart</h3>
-                                <h3 class="text-xs md:text-lg font-medium text-gray-800 flex-grow">Status</h3>
-                                <h3 class="text-xs md:text-lg font-medium text-gray-800 flex-grow">Amount</h3>
+                        <div class="bg-white shadow-md rounded-lg  w-full h-[50vh] overflow-y-scroll mb-5">
+                            <div class="grid grid-cols-4 w-full gap-4 py-4 px-6 bg-rose-700">
+                                <h3 class="text-xs md:text-lg font-medium text-white flex-grow">Customer</h3>
+                                <h3 class="text-xs md:text-lg font-medium text-white flex-grow">Cart</h3>
+                                <h3 class="text-xs md:text-lg font-medium text-white flex-grow">Status</h3>
+                                <h3 class="text-xs md:text-lg font-medium text-white ">Amount</h3>
                             </div>
                             {
                                 salesArray && salesArray.map((items, index) => (
@@ -116,6 +120,7 @@ export default function Sales() {
                     </div>
                 </div>
             </div>
+            {PostForm && <Postform />}
         </React.Fragment>
     )
 }

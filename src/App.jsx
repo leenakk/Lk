@@ -8,6 +8,8 @@ import { MyContext } from './context/MyContext';
 import ApprovedPosts from './pages/Dashboard/ApprovedPosts';
 import RejectedPosts from './pages/Dashboard/RejectedPosts';
 import Sales from './pages/Dashboard/Sales';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import Users from './pages/Admin/Users';
 
 function App() {
   const { loader, setloader } = useContext(MyContext)
@@ -27,6 +29,8 @@ function App() {
                 <Route path='/dashboard/approvedposts' element={<ApprovedPosts />} />
                 <Route path='/dashboard/rejectedPosts' element={<RejectedPosts />} />
                 <Route path='/dashboard/sales' element={<Sales />} />
+                <Route path='/admin' element={<AdminDashboard />} />
+                <Route path='/admin/users' element={<Users />} />
               </Routes>
             </div>
           </div>
